@@ -19,6 +19,21 @@ class Student:
             return 'Ошибка'
 
 
+    def average_grad(self):
+        step = 0
+        result = 0
+        for grad in self.grades.values():
+            aver = sum(grad) / len(grad)
+            step += 1
+            result += aver
+        aver_grap = result / step
+
+    def __str__(self):
+        res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за домашнее задание{self.average_grad()}\n ' \
+              f'Курсы в процессе изучения:{self.courses_in_progress}\n Завершенные курсы:{self.finished_courses} '
+        return res
+
+
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -30,6 +45,20 @@ class Lecturer(Mentor):
         super().__init__(name, surname)
         self.courses_attached = []
         self.grades = {}
+
+
+    def _average_grad(self):
+        result = 0
+        step = 0
+        for grad in self.grades.values():
+            aver = sum(grad)/len(grad)
+            step += 1
+            result += aver
+        aver_grap = result / step
+
+    def __str__(self):
+            res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за лекции: {_average_grad()} '
+            return res
 
 class Reviewer(Mentor):
     def __init__(self, name, surname):
@@ -45,6 +74,9 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
+    def __str__(self):
+            res = f'Имя:{self.name}\n Фамилия:{self.surname}'
+
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
@@ -56,7 +88,9 @@ cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 
-print(best_student.grades)
+print(best_student)
+print(cool_mentor)
+# print(best_student.grades)
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
@@ -68,12 +102,9 @@ best_student.rate_lc(cool_mentor, 'Python', 8)
 best_student.rate_lc(cool_mentor, 'Python', 8)
 best_student.rate_lc(cool_mentor, 'Python', 8)
 
-print(cool_mentor.grades)
+print(best_student)
+print(cool_mentor)
+
+# print(cool_mentor.grades)
 
 
-# мы     реализовали    возможность    выставлять    студентам    оценки    за    домашние    задания.Теперь    это
-# могут    делать    только    Reviewer(реализуйте    такой    метод)! А    что    могут    делать    лекторы? Получать
-# оценки    за    лекции    от    студентов:) Реализуйте    метод    выставления    оценок    лекторам    у    класса
-# Student(оценки    по    10 - балльной    шкале, хранятся    в    атрибуте - словаре    у    Lecturer, в    котором
-# ключи – названия    курсов, а    значения – списки    оценок).Лектор    при    этом    должен    быть    закреплен
-# за    тем    курсом, на    который    записан    студент.
