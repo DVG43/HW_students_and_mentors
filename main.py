@@ -97,6 +97,77 @@ best_student.rate_lc(cool_mentor_l, 'Python', 8)
 
 print(cool_mentor_l)
 
-# print(cool_mentor.grades)
+# MENTORS Reviewer
 
+a_mentor_r = Reviewer('Petr', 'Ivanov')
+a_mentor_r.courses_attached += ['Python']
+
+b_mentor_r = Reviewer('Ivan', 'Petrov')
+b_mentor_r.courses_attached += ['Python']
+
+c_mentor_r = Reviewer('Pavel', 'Sidorov')
+c_mentor_r.courses_attached += ['Python']
+
+d_mentor_r = Reviewer('Savelii', 'Morozov')
+d_mentor_r.courses_attached += ['Python']
+
+# Students
+
+a_student = Student('Vasia', 'Kirilov', 'mail')
+a_student.courses_in_progress += ['Python']
+a_mentor_r.rate_hw(a_student, 'Python', 9)
+b_mentor_r.rate_hw(a_student, 'Python', 10)
+c_mentor_r.rate_hw(a_student, 'Python', 8)
+d_mentor_r.rate_hw(a_student, 'Python', 7)
+
+b_student = Student('Vitalii', 'Borzov', 'mail')
+b_student.courses_in_progress += ['Python']
+a_mentor_r.rate_hw(b_student, 'Python', 7)
+b_mentor_r.rate_hw(b_student, 'Python', 9)
+c_mentor_r.rate_hw(b_student, 'Python', 6)
+d_mentor_r.rate_hw(b_student, 'Python', 10)
+
+c_student = Student('Vasia', 'Kirilov', 'mail')
+c_student.courses_in_progress += ['Python']
+a_mentor_r.rate_hw(c_student, 'Python', 8)
+b_mentor_r.rate_hw(c_student, 'Python', 9)
+c_mentor_r.rate_hw(c_student, 'Python', 10)
+d_mentor_r.rate_hw(c_student, 'Python', 9)
+
+d_student = Student('Boriy', 'Gukov', 'mail')
+d_student.courses_in_progress += ['Python']
+a_mentor_r.rate_hw(d_student, 'Python', 9)
+b_mentor_r.rate_hw(d_student, 'Python', 10)
+c_mentor_r.rate_hw(d_student, 'Python', 10)
+d_mentor_r.rate_hw(d_student, 'Python', 9)
+
+# MENTORS Lecturer
+
+a_mentor_l = Lecturer('Mik', 'Vuddy')
+a_mentor_l.courses_attached += ['Python']
+a_student.rate_lc(a_mentor_l, 'Python', 8)
+b_student.rate_lc(a_mentor_l, 'Python', 7)
+c_student.rate_lc(a_mentor_l, 'Python', 6)
+d_student.rate_lc(a_mentor_l, 'Python', 9)
+
+b_mentor_l = Lecturer('Gek', 'Burry')
+b_mentor_l.courses_attached += ['Python']
+a_student.rate_lc(b_mentor_l, 'Python', 9)
+b_student.rate_lc(b_mentor_l, 'Python', 10)
+c_student.rate_lc(b_mentor_l, 'Python', 7)
+d_student.rate_lc(b_mentor_l, 'Python', 6)
+
+c_mentor_l = Lecturer('Bob', 'Fany')
+c_mentor_l.courses_attached += ['Python']
+a_student.rate_lc(c_mentor_l, 'Python', 8)
+b_student.rate_lc(c_mentor_l, 'Python', 6)
+c_student.rate_lc(c_mentor_l, 'Python', 9)
+d_student.rate_lc(c_mentor_l, 'Python', 10)
+
+d_mentor_l = Lecturer('Luis', 'Sandy')
+d_mentor_l.courses_attached += ['Python']
+a_student.rate_lc(d_mentor_l, 'Python', 7)
+b_student.rate_lc(d_mentor_l, 'Python', 9)
+c_student.rate_lc(d_mentor_l, 'Python', 8)
+d_student.rate_lc(d_mentor_l, 'Python', 9)
 
