@@ -19,17 +19,15 @@ class Student:
             return 'Ошибка'
 
 
-    def average_grad(self):
-        step = 0
-        result = 0
+    def _average_grad(self):
+        result = []
         for grad in self.grades.values():
-            aver = sum(grad) / len(grad)
-            step += 1
-            result += aver
-        aver_grap = result / step
+            result += grad
+        aver_grad = sum(result) / len(result)
+        return aver_grad
 
     def __str__(self):
-        res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за домашнее задание{self.average_grad()}\n ' \
+        res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за домашнее задание{self._average_grad()}\n ' \
               f'Курсы в процессе изучения:{self.courses_in_progress}\n Завершенные курсы:{self.finished_courses} '
         return res
 
@@ -46,18 +44,16 @@ class Lecturer(Mentor):
         self.courses_attached = []
         self.grades = {}
 
-
     def _average_grad(self):
-        result = 0
-        step = 0
+        result = []
         for grad in self.grades.values():
-            aver = sum(grad)/len(grad)
-            step += 1
-            result += aver
-        aver_grap = result / step
+            result += grad
+        aver_grad = sum(result) / len(result)
+        return aver_grad
+
 
     def __str__(self):
-            res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за лекции: {_average_grad()} '
+            res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за лекции: {self._average_grad()} '
             return res
 
 class Reviewer(Mentor):
@@ -76,34 +72,30 @@ class Reviewer(Mentor):
 
     def __str__(self):
             res = f'Имя:{self.name}\n Фамилия:{self.surname}'
-
+            return res
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
 
-cool_mentor = Reviewer('Some', 'Buddy')
-cool_mentor.courses_attached += ['Python']
+cool_mentor_r = Reviewer('Some', 'Buddy')
+cool_mentor_r.courses_attached += ['Python']
 
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
+cool_mentor_r.rate_hw(best_student, 'Python', 10)
+cool_mentor_r.rate_hw(best_student, 'Python', 10)
+cool_mentor_r.rate_hw(best_student, 'Python', 10)
 
 print(best_student)
-print(cool_mentor)
+print(cool_mentor_r)
 # print(best_student.grades)
 
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
+cool_mentor_l = Lecturer('Nik', 'Rubby')
+cool_mentor_l.courses_attached += ['Python']
 
-cool_mentor = Lecturer('Some', 'Buddy')
-cool_mentor.courses_attached += ['Python']
+best_student.rate_lc(cool_mentor_l, 'Python', 8)
+best_student.rate_lc(cool_mentor_l, 'Python', 8)
+best_student.rate_lc(cool_mentor_l, 'Python', 8)
 
-best_student.rate_lc(cool_mentor, 'Python', 8)
-best_student.rate_lc(cool_mentor, 'Python', 8)
-best_student.rate_lc(cool_mentor, 'Python', 8)
-
-print(best_student)
-print(cool_mentor)
+print(cool_mentor_l)
 
 # print(cool_mentor.grades)
 
