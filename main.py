@@ -215,3 +215,5 @@ mentor_list.append(d_mentor_l)
 name_curs = input('Введите курс')
 student_total_avereg_grad (student_list, name_curs)
 mentor_total_avereg_grad (mentor_list, name_curs)
+print (a_mentor_r)
+
