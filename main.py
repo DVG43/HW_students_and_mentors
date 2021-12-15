@@ -223,9 +223,9 @@ else:
 print()
 print(a_mentor_l)
 print('Его сравниваем с Bob по средней оценке')
+
 if  a_mentor_l < c_mentor_l == "True":
     print(f'{a_mentor_l.name} хуже ')
 else:
     print(f'{a_mentor_l.name} лучше ')
 
-# if a_student.__lt__(other) == "true":
