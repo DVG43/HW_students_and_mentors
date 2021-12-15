@@ -32,6 +32,11 @@ class Student:
               f'Завершенные курсы:{" ".join(self.finished_courses)} '
         return res
 
+    def __lt__(self, other):
+        if not isinstance(other, Student):
+            print('На курсе нет такого студента')
+            return self._average_grad() < other._average_grad()
+
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -56,6 +61,11 @@ class Lecturer(Mentor):
             res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за лекции: {self._average_grad()} '
             return res
 
+    def __lt__(self, other):
+        if not isinstance(other, Mentor):
+            print('На курсе нет такого ментора')
+            return self._average_grad() < other._average_grad()
+
 class Reviewer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
@@ -74,7 +84,7 @@ class Reviewer(Mentor):
             res = f'Имя:{self.name}\n Фамилия:{self.surname}'
             return res
 
- # Функция котораЯ возвращает среднюю оценку за определенный курс
+ # Функции которые возвращают среднюю оценку за определенный курс
 
 def student_total_avereg_grad (stud_list, name_curs):
     if name_curs in list_of_curs:
@@ -85,7 +95,7 @@ def student_total_avereg_grad (stud_list, name_curs):
             step += 1
          print (f'Средняя оценка студентов за курс {name_curs}: {summa / step}')
 
-    else: print ('Такой курс отсутсвует в учебной программе')
+    else: print ('Для студентов такой курс отсутсвует в учебной программе')
 
 def mentor_total_avereg_grad (ment_list, name_curs):
     if name_curs in list_of_curs:
@@ -96,32 +106,10 @@ def mentor_total_avereg_grad (ment_list, name_curs):
             step += 1
          print (f'Средняя оценка менторов за курс {name_curs}: {summa / step}')
 
-    else: print ('Такой курс отсутсвует в учебной программе')
+    else: print ('Для менторов такой курс отсутсвует в учебной программе')
 
 
-# best_student = Student('Ruoy', 'Eman', 'your_gender')
-# best_student.courses_in_progress += ['Python']
-#
-# cool_mentor_r = Reviewer('Some', 'Buddy')
-# cool_mentor_r.courses_attached += ['Python']
-#
-# cool_mentor_r.rate_hw(best_student, 'Python', 10)
-# cool_mentor_r.rate_hw(best_student, 'Python', 10)
-# cool_mentor_r.rate_hw(best_student, 'Python', 10)
-#
-# print(best_student)
-# print(cool_mentor_r)
-#
-#
-# cool_mentor_l = Lecturer('Nik', 'Rubby')
-# cool_mentor_l.courses_attached += ['Python']
-#
-# best_student.rate_lc(cool_mentor_l, 'Python', 8)
-# best_student.rate_lc(cool_mentor_l, 'Python', 8)
-# best_student.rate_lc(cool_mentor_l, 'Python', 8)
-#
-# print(cool_mentor_l)
-#
+
 # MENTORS Reviewer
 
 list_of_curs = ['Python', 'Java']
@@ -212,8 +200,32 @@ mentor_list.append(d_mentor_l)
 # для подсчета средней оценки за домашние задания по всем студентам в рамках конкретного курса (в качестве аргументов принимаем список студентов и название курса);
 # для подсчета средней оценки за лекции всех лекторов в рамках курса (в качестве аргумента принимаем список лекторов и название курса).
 
+# def __lt__(self, other):
+#     if not isinstance(other, Student):
+#         print('На курсе нет такого студента')
+#         return self._average_grad() < other._average_grad()
+
+
 name_curs = input('Введите курс')
 student_total_avereg_grad (student_list, name_curs)
 mentor_total_avereg_grad (mentor_list, name_curs)
-print (a_mentor_r)
+print()
+print(a_mentor_r)
+print()
+print(a_student)
+print('Его  сравниваем с Vitalii по средней оценке')
 
+if  a_student < b_student == "True":
+    print(f'{a_student.name} хуже ')
+else:
+    print(f'{a_student.name} лучше ')
+
+print()
+print(a_mentor_l)
+print('Его сравниваем с Bob по средней оценке')
+if  a_mentor_l < c_mentor_l == "True":
+    print(f'{a_mentor_l.name} хуже ')
+else:
+    print(f'{a_mentor_l.name} лучше ')
+
+# if a_student.__lt__(other) == "true":
