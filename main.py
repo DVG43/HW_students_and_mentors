@@ -76,7 +76,27 @@ class Reviewer(Mentor):
 
  # Функция котораЯ возвращает среднюю оценку за определенный курс
 
-#def student_total_avereg_grad (stud_list, name_cours):
+def student_total_avereg_grad (stud_list, name_curs):
+    if name_curs in list_of_curs:
+         summa = 0
+         step = 1
+         for stud in stud_list:
+            summa += stud._average_grad()
+            step += 1
+         print (f'Средняя оценка студентов за курс {name_curs}: {summa / step}')
+
+    else: print ('Такой курс отсутсвует в учебной программе')
+
+def mentor_total_avereg_grad (ment_list, name_curs):
+    if name_curs in list_of_curs:
+         summa = 0
+         step = 1
+         for mentor_a in ment_list:
+            summa += mentor_a._average_grad()
+            step += 1
+         print (f'Средняя оценка менторов за курс {name_curs}: {summa / step}')
+
+    else: print ('Такой курс отсутсвует в учебной программе')
 
 
 # best_student = Student('Ruoy', 'Eman', 'your_gender')
@@ -104,6 +124,8 @@ class Reviewer(Mentor):
 #
 # MENTORS Reviewer
 
+list_of_curs = ['Python', 'Java']
+
 a_mentor_r = Reviewer('Petr', 'Ivanov')
 a_mentor_r.courses_attached += ['Python']
 
@@ -117,7 +139,8 @@ d_mentor_r = Reviewer('Savelii', 'Morozov')
 d_mentor_r.courses_attached += ['Python']
 
 # Students
-#student_list = []
+student_list = []
+mentor_list = []
 
 a_student = Student('Vasia', 'Kirilov', 'mail')
 a_student.courses_in_progress += ['Python']
@@ -125,7 +148,7 @@ a_mentor_r.rate_hw(a_student, 'Python', 9)
 b_mentor_r.rate_hw(a_student, 'Python', 10)
 c_mentor_r.rate_hw(a_student, 'Python', 8)
 d_mentor_r.rate_hw(a_student, 'Python', 7)
-#student_list.append(a_student)
+student_list.append(a_student)
 
 
 b_student = Student('Vitalii', 'Borzov', 'mail')
@@ -134,7 +157,7 @@ a_mentor_r.rate_hw(b_student, 'Python', 7)
 b_mentor_r.rate_hw(b_student, 'Python', 9)
 c_mentor_r.rate_hw(b_student, 'Python', 6)
 d_mentor_r.rate_hw(b_student, 'Python', 10)
-#student_list.append(b_student)
+student_list.append(b_student)
 
 c_student = Student('Vasia', 'Kirilov', 'mail')
 c_student.courses_in_progress += ['Python']
@@ -142,7 +165,7 @@ a_mentor_r.rate_hw(c_student, 'Python', 8)
 b_mentor_r.rate_hw(c_student, 'Python', 9)
 c_mentor_r.rate_hw(c_student, 'Python', 10)
 d_mentor_r.rate_hw(c_student, 'Python', 9)
-#student_list.append(c_student)
+student_list.append(c_student)
 
 d_student = Student('Boriy', 'Gukov', 'mail')
 d_student.courses_in_progress += ['Python']
@@ -150,10 +173,7 @@ a_mentor_r.rate_hw(d_student, 'Python', 9)
 b_mentor_r.rate_hw(d_student, 'Python', 10)
 c_mentor_r.rate_hw(d_student, 'Python', 10)
 d_mentor_r.rate_hw(d_student, 'Python', 9)
-#student_list.append(d_student)
-
-# print(student_list)
-
+student_list.append(d_student)
 
 # MENTORS Lecturer
 
@@ -163,13 +183,15 @@ a_student.rate_lc(a_mentor_l, 'Python', 8)
 b_student.rate_lc(a_mentor_l, 'Python', 7)
 c_student.rate_lc(a_mentor_l, 'Python', 6)
 d_student.rate_lc(a_mentor_l, 'Python', 9)
+mentor_list.append(a_mentor_l)
 
-b_mentor_l = Lecturer('Gek', 'Burry')
+b_mentor_l = Lecturer('Nik', 'Harry')
 b_mentor_l.courses_attached += ['Python']
 a_student.rate_lc(b_mentor_l, 'Python', 9)
 b_student.rate_lc(b_mentor_l, 'Python', 10)
 c_student.rate_lc(b_mentor_l, 'Python', 7)
 d_student.rate_lc(b_mentor_l, 'Python', 6)
+mentor_list.append(b_mentor_l)
 
 c_mentor_l = Lecturer('Bob', 'Fany')
 c_mentor_l.courses_attached += ['Python']
@@ -177,6 +199,7 @@ a_student.rate_lc(c_mentor_l, 'Python', 8)
 b_student.rate_lc(c_mentor_l, 'Python', 6)
 c_student.rate_lc(c_mentor_l, 'Python', 9)
 d_student.rate_lc(c_mentor_l, 'Python', 10)
+mentor_list.append(c_mentor_l)
 
 d_mentor_l = Lecturer('Luis', 'Sandy')
 d_mentor_l.courses_attached += ['Python']
@@ -184,8 +207,11 @@ a_student.rate_lc(d_mentor_l, 'Python', 7)
 b_student.rate_lc(d_mentor_l, 'Python', 9)
 c_student.rate_lc(d_mentor_l, 'Python', 8)
 d_student.rate_lc(d_mentor_l, 'Python', 9)
+mentor_list.append(d_mentor_l)
 
 # для подсчета средней оценки за домашние задания по всем студентам в рамках конкретного курса (в качестве аргументов принимаем список студентов и название курса);
 # для подсчета средней оценки за лекции всех лекторов в рамках курса (в качестве аргумента принимаем список лекторов и название курса).
 
-#print (d_mentor_l)
+name_curs = input('Введите курс')
+student_total_avereg_grad (student_list, name_curs)
+mentor_total_avereg_grad (mentor_list, name_curs)
