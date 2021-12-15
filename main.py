@@ -28,9 +28,9 @@ class Student:
 
     def __str__(self):
         res = f'Имя:{self.name}\n Фамилия:{self.surname}\n Средняя оценка за домашнее задание{self._average_grad()}\n ' \
-              f'Курсы в процессе изучения:{self.courses_in_progress}\n Завершенные курсы:{self.finished_courses} '
+              f'Курсы в процессе изучения:{" ".join(self.courses_in_progress)}\n ' \
+              f'Завершенные курсы:{" ".join(self.finished_courses)} '
         return res
-
 
 class Mentor:
     def __init__(self, name, surname):
@@ -74,29 +74,34 @@ class Reviewer(Mentor):
             res = f'Имя:{self.name}\n Фамилия:{self.surname}'
             return res
 
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
+ # Функция котораЯ возвращает среднюю оценку за определенный курс
 
-cool_mentor_r = Reviewer('Some', 'Buddy')
-cool_mentor_r.courses_attached += ['Python']
+#def student_total_avereg_grad (stud_list, name_cours):
 
-cool_mentor_r.rate_hw(best_student, 'Python', 10)
-cool_mentor_r.rate_hw(best_student, 'Python', 10)
-cool_mentor_r.rate_hw(best_student, 'Python', 10)
 
-print(best_student)
-print(cool_mentor_r)
-# print(best_student.grades)
-
-cool_mentor_l = Lecturer('Nik', 'Rubby')
-cool_mentor_l.courses_attached += ['Python']
-
-best_student.rate_lc(cool_mentor_l, 'Python', 8)
-best_student.rate_lc(cool_mentor_l, 'Python', 8)
-best_student.rate_lc(cool_mentor_l, 'Python', 8)
-
-print(cool_mentor_l)
-
+# best_student = Student('Ruoy', 'Eman', 'your_gender')
+# best_student.courses_in_progress += ['Python']
+#
+# cool_mentor_r = Reviewer('Some', 'Buddy')
+# cool_mentor_r.courses_attached += ['Python']
+#
+# cool_mentor_r.rate_hw(best_student, 'Python', 10)
+# cool_mentor_r.rate_hw(best_student, 'Python', 10)
+# cool_mentor_r.rate_hw(best_student, 'Python', 10)
+#
+# print(best_student)
+# print(cool_mentor_r)
+#
+#
+# cool_mentor_l = Lecturer('Nik', 'Rubby')
+# cool_mentor_l.courses_attached += ['Python']
+#
+# best_student.rate_lc(cool_mentor_l, 'Python', 8)
+# best_student.rate_lc(cool_mentor_l, 'Python', 8)
+# best_student.rate_lc(cool_mentor_l, 'Python', 8)
+#
+# print(cool_mentor_l)
+#
 # MENTORS Reviewer
 
 a_mentor_r = Reviewer('Petr', 'Ivanov')
@@ -112,6 +117,7 @@ d_mentor_r = Reviewer('Savelii', 'Morozov')
 d_mentor_r.courses_attached += ['Python']
 
 # Students
+#student_list = []
 
 a_student = Student('Vasia', 'Kirilov', 'mail')
 a_student.courses_in_progress += ['Python']
@@ -119,6 +125,8 @@ a_mentor_r.rate_hw(a_student, 'Python', 9)
 b_mentor_r.rate_hw(a_student, 'Python', 10)
 c_mentor_r.rate_hw(a_student, 'Python', 8)
 d_mentor_r.rate_hw(a_student, 'Python', 7)
+#student_list.append(a_student)
+
 
 b_student = Student('Vitalii', 'Borzov', 'mail')
 b_student.courses_in_progress += ['Python']
@@ -126,6 +134,7 @@ a_mentor_r.rate_hw(b_student, 'Python', 7)
 b_mentor_r.rate_hw(b_student, 'Python', 9)
 c_mentor_r.rate_hw(b_student, 'Python', 6)
 d_mentor_r.rate_hw(b_student, 'Python', 10)
+#student_list.append(b_student)
 
 c_student = Student('Vasia', 'Kirilov', 'mail')
 c_student.courses_in_progress += ['Python']
@@ -133,6 +142,7 @@ a_mentor_r.rate_hw(c_student, 'Python', 8)
 b_mentor_r.rate_hw(c_student, 'Python', 9)
 c_mentor_r.rate_hw(c_student, 'Python', 10)
 d_mentor_r.rate_hw(c_student, 'Python', 9)
+#student_list.append(c_student)
 
 d_student = Student('Boriy', 'Gukov', 'mail')
 d_student.courses_in_progress += ['Python']
@@ -140,6 +150,10 @@ a_mentor_r.rate_hw(d_student, 'Python', 9)
 b_mentor_r.rate_hw(d_student, 'Python', 10)
 c_mentor_r.rate_hw(d_student, 'Python', 10)
 d_mentor_r.rate_hw(d_student, 'Python', 9)
+#student_list.append(d_student)
+
+# print(student_list)
+
 
 # MENTORS Lecturer
 
@@ -171,3 +185,7 @@ b_student.rate_lc(d_mentor_l, 'Python', 9)
 c_student.rate_lc(d_mentor_l, 'Python', 8)
 d_student.rate_lc(d_mentor_l, 'Python', 9)
 
+# для подсчета средней оценки за домашние задания по всем студентам в рамках конкретного курса (в качестве аргументов принимаем список студентов и название курса);
+# для подсчета средней оценки за лекции всех лекторов в рамках курса (в качестве аргумента принимаем список лекторов и название курса).
+
+#print (d_mentor_l)
